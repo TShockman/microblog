@@ -1,3 +1,9 @@
+# Git repo
+https://github.com/TShockman/microblog
+
+# Web App
+http://microblog.thom.website/posts
+
 # Microblog
 
 To start your Phoenix server:
