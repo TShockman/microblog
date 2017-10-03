@@ -3,9 +3,9 @@ defmodule MicroblogWeb.PostControllerTest do
 
   alias Microblog.Blog
 
-  @create_attrs %{content: "some content", timestamp: ~N[2010-04-17 14:00:00.000000], user: "some user"}
-  @update_attrs %{content: "some updated content", timestamp: ~N[2011-05-18 15:01:01.000000], user: "some updated user"}
-  @invalid_attrs %{content: nil, timestamp: nil, user: nil}
+  @create_attrs %{content: "some content", timestamp: ~N[2010-04-17 14:00:00.000000]}
+  @update_attrs %{content: "some updated content", timestamp: ~N[2011-05-18 15:01:01.000000]}
+  @invalid_attrs %{content: nil, timestamp: nil}
 
   def fixture(:post) do
     {:ok, post} = Blog.create_post(@create_attrs)

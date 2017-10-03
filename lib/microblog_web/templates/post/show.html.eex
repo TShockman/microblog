@@ -1,23 +1,16 @@
-<h2>Show Post</h2>
-
-<ul>
-
-  <li>
-    <strong>Timestamp:</strong>
-    <%= @post.timestamp %>
-  </li>
-
-  <li>
-    <strong>User:</strong>
-    <%= @post.user %>
-  </li>
-
-  <li>
-    <strong>Content:</strong>
-    <%= @post.content %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: post_path(@conn, :index) %></span>
+<div class="media border p-3">
+  <%= img_tag(static_path(@conn, "/images/thom.jpg"), class: "mr-2") %>
+  <div class="media-body">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><a href="#"><%= @post.user_id %></a></h4>
+        <h6 class="card-subtitle text-muted"><%= @post.timestamp %></h6>
+        <p class="card-text">
+          <%= @post.content %>
+        </p>
+        <span><%= link "Edit", to: post_path(@conn, :edit, @post), class: "btn btn-secondary card-link"%></span>
+        <span><%= link "Delete", to: post_path(@conn, :delete, @post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger card-link" %></span>
+      </div> 
+    </div>
+  </div>
+</div>

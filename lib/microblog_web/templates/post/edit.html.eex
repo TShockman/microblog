@@ -1,5 +1,14 @@
-<h2>Edit Post</h2>
+<div class="media border p-3">
+    <%= img_tag(static_path(@conn, "/images/thom.jpg"), class: "mr-2") %>
+    <div class="media-body">
 
-<%= render "form.html", Map.put(assigns, :action, post_path(@conn, :update, @post)) %>
 
-<span><%= link "Back", to: post_path(@conn, :index) %></span>
+		<div class="card">
+		  <div class="card-body">
+		    <h4 class="card-title"><a href="#"><%= @post.user_id %></a></h4>
+
+			<%= render "form.html", Map.put(assigns, :action, post_path(@conn, :update, @post)) %>
+		  </div>
+		</div>
+	</div>
+</div>

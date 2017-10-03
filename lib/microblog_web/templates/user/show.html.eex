@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col">
+    <div class="media">
+		  <%= img_tag(static_path(@conn, "/images/thom.jpg"), class: "mr-2") %>
+      <div class="media-body">
+        <h1 class="display-3"> @<%= @user.username %> </h1>
+      </div> 
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <nav class="nav nav-tabs">
+      <a class="nav-link active" data-toggle="tab" href="#posts">My Posts</a>
+      <a class="nav-link" data-toggle="tab" href="#feed">My Feed</a>
+      <a class="nav-link" data-toggle="tab" href="#following">Following</a>
+      <a class="nav-link" data-toggle="tab" href="#followers">My Followers</a>
+      <%= link "Edit", to: user_path(@conn, :edit, @user.id), class: "nav-link" %>
+    </nav>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="tab-content">
+      <div id="posts" class="tab-pane fade in">
+        <h3>HOME</h3>
+        <p>Some content.</p>
+      </div>
+      <div id="feed" class="tab-pane fade in">
+        <h3>HOME</h3>
+        <p>Some content.</p>
+      </div>
+      <div id="following" class="tab-pane fade">
+        <h3>Menu 1</h3>
+        <p>Some content in menu 1.</p>
+      </div>
+      <div id="followers" class="tab-pane fade">
+        <h3>Menu 2</h3>
+        <p>Some content in menu 2.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,30 +1,18 @@
-<h2>Listing Posts</h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Timestamp</th>
-      <th>User</th>
-      <th>Content</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
 <%= for post <- @posts do %>
-    <tr>
-      <td><%= post.timestamp %></td>
-      <td><%= post.user %></td>
-      <td><%= post.content %></td>
-
-      <td class="text-right">
-        <span><%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
+  <div class="media border p-3">
+    <%= img_tag(static_path(@conn, "/images/thom.jpg"), class: "mr-2") %>
+    <div class="media-body">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="#"><%= post.user_id %></a></h4>
+          <h6 class="card-subtitle text-muted"><%= post.timestamp %></h6>
+          <p class="card-text">
+            <%= post.content %>
+          </p>
+          <span><%= link "Edit", to: post_path(@conn, :edit, post), class: "btn btn-secondary card-link"%></span>
+          <span><%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger card-link" %></span>
+        </div> 
+      </div>
+    </div>
+  </div>
 <% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Post", to: post_path(@conn, :new) %></span>
