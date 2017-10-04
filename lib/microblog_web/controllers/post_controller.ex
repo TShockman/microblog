@@ -14,7 +14,7 @@ defmodule MicroblogWeb.PostController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"post" => post_params}) do
+  def create(conn, %{"post" => post_params}) do    
     case Blog.create_post(post_params) do
       {:ok, post} ->
         conn

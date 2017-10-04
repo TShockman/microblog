@@ -1,16 +1,7 @@
 <div class="row">
   <%= for user <- @users do %>
     <div class="col-12">
-      <div class="media border p-3">
-        <%= img_tag(static_path(@conn, "/images/thom.jpg"), class: "mr-2") %>
-        <div class="media-body">
-          <%= link "@"<>user.username, to: user_path(@conn, :show, user.id), class: "display-3" %>
-          <br>
-          <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-primary" %></span>
-          <span><%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-secondary btn-xs" %></span>
-          <span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %></span>
-        </div> 
-      </div>
+      <%= render MicroblogWeb.UserView, "card.html", user: user, conn: @conn %>
     </div>
   <% end %>
 </div>

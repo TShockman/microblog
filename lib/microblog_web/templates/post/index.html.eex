@@ -4,7 +4,7 @@
     <div class="media-body">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><a href="#"><%= post.user_id %></a></h4>
+          <h4 class="card-title"><a href="#"><%= post.user.username %></a></h4>
           <h6 class="card-subtitle text-muted"><%= post.timestamp %></h6>
           <p class="card-text">
             <%= post.content %>

@@ -2,7 +2,13 @@
 https://github.com/TShockman/microblog
 
 # Web App
-http://microblog.thom.website/posts
+http://microblog.thom.website/users
+
+# Current Missing Functionality
+Currently adding new posts is broken, as is following. The buttons are there but the backend functionality isn't quite right.
+
+# Credit
+Session code taken from Nat Tuck's lecture notes
 
 # Microblog
 
