@@ -17,8 +17,8 @@ defmodule Microblog.Blog do
       [%Post{}, ...]
 
   """
-  def list_posts do
-    Repo.all(Post) |> Repo.preload(:user)
+  def list_posts(user_id) do
+    Repo.all(from p in Post, where: p.user_id == ^user_id ) |> Repo.preload(:user)
   end
 
   @doc """

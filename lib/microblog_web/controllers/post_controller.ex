@@ -5,12 +5,12 @@ defmodule MicroblogWeb.PostController do
   alias Microblog.Blog.Post
 
   def index(conn, _params) do
-    posts = Blog.list_posts()
+    posts = Blog.list_posts(conn.assigns.current_user.id)
     render(conn, "index.html", posts: posts)
   end
 
   def new(conn, _params) do
-    changeset = Blog.change_post(%Post{})
+    changeset = Blog.change_post(%Post{user_id: conn.assigns.current_user.id})
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -19,7 +19,7 @@ defmodule MicroblogWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: user_post_path(conn, :show, conn.user_id, post))
+        |> redirect(to: user_post_path(conn, :show, conn.assigns.current_user.id, post))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -43,7 +43,7 @@ defmodule MicroblogWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: user_post_path(conn, :show, conn.user_id, post))
+        |> redirect(to: user_post_path(conn, :show, conn.assigns.current_user.id, post))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", post: post, changeset: changeset)
     end
@@ -55,6 +55,6 @@ defmodule MicroblogWeb.PostController do
 
     conn
     |> put_flash(:info, "Post deleted successfully.")
-    |> redirect(to: user_post_path(conn, :index, conn.user_id))
+    |> redirect(to: user_post_path(conn, :index, conn.assigns.current_user.id))
   end
 end
