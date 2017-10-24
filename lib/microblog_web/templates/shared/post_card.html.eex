@@ -1,0 +1,17 @@
+<div class="media border p-3">
+  <%= img_tag(static_path(@conn, "/images/thom.jpg"), class: "mr-2") %>
+  <div class="media-body">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><a href="#"><%= @post.user.username %></a></h4>
+        <h6 class="card-subtitle text-muted"><%= @post.timestamp %></h6>
+        <p class="card-text">
+          <%= @post.content %>
+        </p>
+        <span><%= link "Show", to: user_post_path(@conn, :show, @user.id, @post.id), class: "btn btn-primary card-link"%></span>
+        <span><%= link "Edit", to: user_post_path(@conn, :edit, @user.id, @post.id), class: "btn btn-secondary card-link"%></span>
+        <span><%= link "Delete", to: user_post_path(@conn, :delete, @user.id, @post.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger card-link" %></span>
+      </div> 
+    </div>
+  </div>
+</div>

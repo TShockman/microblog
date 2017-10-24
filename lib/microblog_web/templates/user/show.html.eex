@@ -17,7 +17,7 @@
       <a class="nav-link" data-toggle="tab" href="#following">Following</a>
       <a class="nav-link" data-toggle="tab" href="#followers">My Followers</a>
       <%= link "Edit", to: user_path(@conn, :edit, @user.id), class: "nav-link" %>
-      <%= link "New Post", to: post_path(@conn, :new), class: "nav-link" %>
+      <%= link "New Post", to: user_post_path(@conn, :new, @user.id), class: "nav-link" %>
       <%= link "Follow", to: follow_path(@conn, :create), class: "nav-link" %>
     </nav>
   </div>
@@ -28,12 +28,12 @@
     <div class="tab-content">
       <div id="posts" class="tab-pane fade in">
         <%= for post <- list_posts(@user) do %>
-    		<%= render MicroblogWeb.PostView, "show.html", post: post, conn: @conn %>
+    		<%= render MicroblogWeb.SharedView, "post_card.html", %{post: post, conn: @conn, user: @user} %>
   		<% end %>
       </div>
       <div id="feed" class="tab-pane fade in">
         <%= for post <- list_feed_posts(@user) do %>
-    		<%= render MicroblogWeb.PostView, "show.html", post: post, conn: @conn %>
+    		<%= render MicroblogWeb.SharedView, "post_card.html", %{post: post, conn: @conn, user: @user} %>
   		<% end %>
       </div>
       <div id="following" class="tab-pane fade">

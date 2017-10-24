@@ -7,7 +7,7 @@
 		  <div class="card-body">
 		    <h4 class="card-title"><a href="#"><%= @post.user.username %></a></h4>
 
-			<%= render "form.html", Map.put(assigns, :action, post_path(@conn, :update, @post)) %>
+			<%= render "form.html", Map.put(assigns, :action, user_post_path(@conn, :update, @conn.user_id, @post)) %>
 		  </div>
 		</div>
 	</div>
