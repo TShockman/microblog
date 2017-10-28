@@ -37,13 +37,13 @@
   		<% end %>
       </div>
       <div id="following" class="tab-pane fade">
-        <%= for following <- list_following(@user) do %>
-          <%= render MicroblogWeb.UserView, "card.html", user: following, conn: @conn %>
+        <%= for follow <- list_following(@user) do %>
+          <%= render MicroblogWeb.UserView, "card.html", user: follow.following, conn: @conn %>
         <% end %>
       </div>
       <div id="followers" class="tab-pane fade">
-        <%= for follower <- list_followers(@user) do %>
-          <%= render MicroblogWeb.UserView, "card.html", user: follower, conn: @conn %>
+        <%= for follow <- list_followers(@user) do %>
+          <%= render MicroblogWeb.UserView, "card.html", user: follow.follower, conn: @conn %>
         <% end %>
       </div>
     </div>
