@@ -12,13 +12,17 @@
 <div class="row">
   <div class="col">
     <nav class="nav nav-tabs">
-      <a class="nav-link active" data-toggle="tab" href="#posts">My Posts</a>
-      <a class="nav-link" data-toggle="tab" href="#feed">My Feed</a>
+      <a class="nav-link active" data-toggle="tab" href="#posts">Posts</a>
+      <a class="nav-link" data-toggle="tab" href="#feed">Feed</a>
       <a class="nav-link" data-toggle="tab" href="#following">Following</a>
-      <a class="nav-link" data-toggle="tab" href="#followers">My Followers</a>
-      <%= link "Edit", to: user_path(@conn, :edit, @user.id), class: "nav-link" %>
-      <%= link "New Post", to: user_post_path(@conn, :new, @user.id), class: "nav-link" %>
-      <%= link "Follow", to: follow_path(@conn, :create), class: "nav-link" %>
+      <a class="nav-link" data-toggle="tab" href="#followers">Followers</a>
+      <%= if @current_user == @user do %>
+        <%= link "Edit", to: user_path(@conn, :edit, @user.id), class: "nav-link" %>
+        <%= link "New Post", to: user_post_path(@conn, :new, @user.id), class: "nav-link" %>
+      <% end %>
+      <%= if @current_user != nil and @current_user != @user do %>
+        <%= link "Follow", to: follow_path(@conn, :create), class: "nav-link" %>
+      <% end %>
     </nav>
   </div>
 </div>

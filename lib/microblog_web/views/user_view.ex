@@ -21,10 +21,10 @@ defmodule MicroblogWeb.UserView do
   end
 
   def list_feed_posts(user) do
-    
+
   	following_ids = Repo.all(from u in User, join: f in Follow, where: f.follower_id == ^user.id and u.id != ^user.id, select: u.id)
 
-  	Repo.all(from p in Post, where: p.user_id in ^following_ids) |> Repo.preload(:user)
+  	Repo.all(from p in Post, where: p.user_id in ^following_ids, preload: :user)
   end
 
 end
